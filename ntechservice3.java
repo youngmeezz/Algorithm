@@ -339,7 +339,7 @@ public class ntechservice3 {
 
             char tmp = 0;
             char array[] = encrypted_text.toLowerCase().toCharArray(); //encrypted_text
-          // 이미 encrypted_text가 string이기떄문에 char형으로 바꿔야한다
+          //이미 encrypted_text가 string이기떄문에 char형으로 바꿔야한다.
           //String을 char으로 변환해 아스키코드등으로 연산을 마친 후 다시 String타입으로 리턴하고 싶을때가 많아서
            
             char array2[] = key.toCharArray();//key : abcdefghijk           
@@ -368,7 +368,7 @@ public class ntechservice3 {
 
         String encrypted_text =sc.next();
         String key = sc.next();
-        int rotation = sc.nextInt();
+        int rotation = sc.nextInt(); 
       
         //Solution sol = new Solution();
         System.out.println(Solution(encrypted_text,key,rotation));
