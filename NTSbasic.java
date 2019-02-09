@@ -14,7 +14,8 @@ public class NTSbasic {
         */
         //이것도 이해 안간다.
         boolean[] cu = new boolean[leng+1]; //새로운 boolean형 체크 배열을 만들어 준다. 이거는 길이에 +1해주는 이유가 0부터 시작하는게 아니라 1부터 가야 된다.
-        //
+        //이거는 0~5까지 주어지는 배열에서 6개의 숫자가 들어간다 하면
+        //1,2,3,4,5,6이 넣어져야 하니까 cu[1] = 1 =>이러면 true cu[2] = 2 , cu[3] = 3, cu[4] = 4, cu[5] = 5, cu[6] =6 으로 주어지게 된다. 
         
         for(int i=0;i<leng;i++){
             int temp = arr[i];//배열을 int형 변수 temp에 넣어 줄수 있다.그니까 arr[0]을 temp에 넣어주고
@@ -26,11 +27,19 @@ public class NTSbasic {
 
             //만약에 1개씩 들어가야 하는 boolean cu배열에 temp인덱스가 들어가면 true가 나온다?
             //이것도 이해 안간다.
+            //원래는 temp에다가 arr[i]를 넣으니까 1~6까지 숫자가 들어간다.
+            //그래서cu[temp] 에서도 1~6까지 숫자가 들어가야 한다.
+            //cu[temp] 1~6의 숫자가 넣어지면 true값이 되고 
+           // cu[temp] = true; 
+
+            //이제 만약 true값이 이미 주어진경우 한번이라도 나온 것이기 떄문에 중복이면 안된다. 따라서 true값이 나왔다면 이제 false로 바꿔준다.
+            //즉 cu[1] = true인데 다시 cu[1] 이 나오면 false가 된다 즉 배열안에 중복이 선언된거니까 false를 출력해준다.
             if(cu[temp] == true) {
                 return false;
-            }else{
-                cu[temp] = true;
-            }
+            }else //true값이 아니라면 한번도 나온 것이 아니기때문에 true로 변환시켜줘서 위로 갈떄 다시 true가 되면 중복되는걸로 확인함.
+            //여기서 반드시 if(cu[temp]==true) 먼저 해줘야함 먼저 해줘야 else로 바로 넘어가서 true로 바꿔주는데 먼저 true로 넣어버리면 다 true라서 false로 다바꿔짐
+                return true;
+
         }
        
         return answer;

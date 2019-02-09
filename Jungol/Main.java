@@ -1491,6 +1491,7 @@ public class Main{
 
  
 //10 이하의 두 개의 정수를 입력받아서 작은 수부터 큰 수까지의 구구단을 차례대로 출력하는 프로그램을 구조화하여 작성하시오.
+/*
 import java.util.Scanner;
 public class Main{
     public static void main(String[] args){
@@ -1525,3 +1526,293 @@ public class Main{
                 System.out.println("");
             }
         } 
+        */
+
+//‘@’문자를 10개 출력하는 함수를 작성 한 후 함수를 세 번 호출하여 아래와 같이 출력하는 프로그램을 작성하시오.
+/*
+public class Main{
+    public static void main(String[] args){
+        System.out.println("first");
+        method();
+        System.out.println("second");
+        method();
+        System.out.println("third");
+        method();
+    }
+    public static void  method(){
+        for(int i=1;i<=10;i++){
+            System.out.print("@");
+        }
+        System.out.println("");
+    }
+}
+*/
+//1부터 전달받은 수까지의 합을 출력하는 함수를 작성하고 1000 이하의 자연수를 입력받아 작성한 함수로 전달하여 출력하는 프로그램을 작성하시오.
+/*
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        method(n);
+    }
+    public static void method(int m){
+        int sum =0;
+        for(int i=1;i<=m;i++){
+            sum+=i;
+        }
+        System.out.println(sum);
+    }
+}
+*/
+//100이하의 자연수를 입력받아 아래와 같은 사각형을 출력하는 프로그램을 작성하시오. (출력하는 부분은 함수로 작성하시오.)
+/*
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        square(n);
+    }
+    public static void square(int n){
+        int[][] Arr = new int[n][n];
+
+        //이거는 테두리에 123,123을 곱할것을 미리 행과열에 저장해 두는것이다. 겉테두리5개 123,123
+        for(int i=0;i<n;i++){
+            Arr[0][i] = i+1;
+            Arr[i][0] = i+1;
+        }
+        //이거는 위에서 행과 열에서123,123을 해놓은 것을 이제 각각 곱해서 행렬[1][1]부터 안에 조그만 4개안에 집어 넣으려는 것이다.
+        for(int j=1;j<n;j++){
+            for(int i=1;i<n;i++){
+                Arr[j][i] = Arr[j][0]*Arr[0][i];
+            }
+        }
+        for(int j=0;j<n;j++){
+            for(int i=0;i<n;i++){
+                System.out.print(Arr[j][i]+" ");
+            }
+            System.out.println("");
+            }
+        }
+    }
+*/
+/*
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        method(a,b);
+    }
+        public static void method(int a, int b)
+        {
+            int max=0;
+            int min=0;
+
+            if(a>b){
+                max =a;
+                min =b;
+            }
+            else if(a<b)
+            {
+                max=b;
+                min=a;
+            }
+            int result = 0;
+            result = max*max - min*min;
+            System.out.println(result);
+        }
+    }
+*/
+
+//3명 학생의 3과목 점수를 입력받아 각 과목별 학생별 총점을 출력하는 구조화된 프로그램을 작성하시오.
+/*
+public class Main{
+    public static void  main(String[] args){
+        
+        Scanner sc = new Scanner(System.in);
+        //총 9개의 점수를 입력 받아야 하는 구조인것 같다.
+        for(int i=0;i<9;i++){
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        
+        method(a,b,c);
+        }
+    }
+        public static int method(int a,int b,int c){
+
+            int arr[][] = new int[3][3];
+
+            for(int i=0;i<3;i++){
+                for(int j=0;j<3;j++){
+                    arr[i][j] = a;
+                }
+            }
+            int result1 =0; //과목별 총점
+            int result2 =0; //학생별 총점
+        }
+    }
+}
+*/
+////3명 학생의 3과목 점수를 입력받아 각 과목별  학생별 총점을 출력하는 구조화된 프로그램을 작성하시오.
+ /*
+public class Main{
+    public static void main(String[] args){
+        score();
+    }
+    public static void score(){
+        Scanner sc = new Scanner(System.in);
+       // int student = 3;
+
+        int arr[][] = new int [4][4];
+
+
+        //이게 9개씩 입력받을 값
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                arr[i][j] = sc.nextInt();
+            }
+        }
+        //사각형의 테두리 즉 열이 3인 이유가 합계는 마지막 열에 구해놓을 것이기 때문에 3을 써준다 3은 그전열까지는 포함되는 값이 아님
+            for(int i=0;i<3;i++){
+                for(int j=0;j<3;j++){
+                    arr[i][3] += arr[i][j];
+                }
+            }
+            for(int j=0;j<3;j++){
+                for(int i=0;i<3;i++){
+                    arr[3][j] +=arr[i][j];
+                }
+            }
+
+            //과목별합에서 더하든지 학생별 합에서 하든지 해서 총합구하기
+            for(int i=0;i<3;i++){
+                arr[3][3] += arr[3][i];
+            }
+
+            for(int i=0;i<4;i++){
+                for(int j=0;j<4;j++){
+                    System.out.print(arr[i][j]+" ");
+                }
+                System.out.println("");
+            }
+
+        }
+    }
+    */
+  
+//2016년의 날짜를 두 개의 정수 월 일로 입력받아서 입력된 날짜가 존재하면 "OK!" 그렇지 않으면 "BAD!"라고 출력하는 프로그램을 작성하시오.
+/*
+public class Main{
+    public static void main(String[] args){
+        //두개의 정수 입력받기
+        Scanner sc = new Scanner(System.in);
+        int month = sc.nextInt();
+        int day = sc.nextInt();
+
+        if(checkDate(month,day) == true){
+            System.out.println("OK!");
+        }else{
+            System.out.println("BAD!");
+        }
+    }
+    //입력된 날짜가 존재하는지 검사하기
+    public static boolean checkDate(int m,int d){
+        boolean result = false;
+        if(m==1 || m==3 || m==5 || m==7 || m==8 || m==10 || m==12){
+            if(d>=1 && d<=31){
+                result = true;
+            }
+        }else if(m==4 || m==6 || m==9 || m==11){
+            if(d>=1&&d<=30){
+                result = true;
+            }
+        }else if(m==2){
+            if(d>=1&&d<=29){
+                result = true;
+            }
+        }
+        return result;
+        }
+    }
+*/
+
+//두 개의 정수를 입력받아 절대값이 더 큰 수를 출력하고 두 개의 실수를 입력받아 절대값이 작은 수를 출력하는 프로그램을 작성하시오. 실수는 소수점 이하 2자리까지 출력한다.
+/*
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        double x = sc.nextDouble();
+        double y = sc.nextDouble();
+
+        System.out.println(absolute(a,b));
+        System.out.printf("%.2f",absolute2(x,y));
+    }
+    //절댓값을 비교하는 함수(정수)
+    public static int absolute(int a,int b){
+        int a2,b2;
+        int result=0;
+        if(a<0){
+            a2 = a*(-1);
+        }else{
+            a2 = a;
+        }
+        if(b<0){
+            b2 = b*(-1);
+        }else{
+            b2 = b;
+        }
+        if(a2>b2){
+            result = a;
+        }else {
+            result = b;
+    }
+    return result;
+}
+
+    public static double absolute2(double x,double y){
+        double x2,y2;
+        double result =0.0;
+        if(x<0){
+            x2 = x*(-1);
+        }else{
+            x2 =x;
+        }
+        if(y<0){
+            y2 = x*(-1);
+        }else{
+            y2 = y;
+        }
+        if(x2>y2){
+            result = y;
+        }else{
+            result = x;
+        }
+        return result; 
+    }
+}
+*/
+//원의 넓이를 입력받아 반지름의 길이를 소수 둘째자리까지 출력하는 프로그램을 작성하시오. 
+//원의 넓이 = 반지름 * 반지름 * 3.14 식을 이용하시오.
+/*
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        double area = sc.nextDouble(); //원의 넓이
+        
+        //원의 넓이
+        System.out.printf("%.2f",method(area));
+    }
+        public static double method(double area){
+            double r = Math.sqrt(area/3.14);
+            return r;
+        }
+    }
+*/
