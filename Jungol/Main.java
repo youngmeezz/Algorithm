@@ -1816,3 +1816,323 @@ public class Main{
         }
     }
 */
+//세 개의 실수를 입력받아
+//가장 큰 수를 올림한 정수를 출력하고
+//가장 작은 수를 내림한 정수를 출력한 후 
+//남은 수를 반올림한 정수를 출력하는 프로그램을 작성하시오.
+//입력되는 실수는 -1000이상 1000이하이다.
+//import java.util.Scanner;
+/*
+import java.lang.Math;
+
+public class Main{
+public static void main(String[] args){
+
+    Scanner sc = new Scanner(System.in);
+    double arr[] = new double[3];
+    for(int i=0;i<arr.length;i++){
+        arr[i] = sc.nextDouble();
+    }
+    printresult(array(arr));
+}
+//배열을 전달받아 오름차순으로 정리하는 함수
+public static double[] array(double[] arr){
+    double temp;
+    for(double j=0;j<3;j++){
+        for(int i=0;i<2;i++){
+            if(arr[i]>arr[i+1]){
+                temp = arr[i];
+                arr[i] = arr[i+1];
+                arr[i+1] = temp;
+            }
+        }
+    }
+    return arr;
+}
+//배열을 전달받아 문제 조건대로 출력해주는 함수
+public static void printresult(double [] arr){
+    //가장 큰 수를 올린다.
+    System.out.print((int)Math.ceil(arr[2]+" "));
+    //가장 작은 수를 내린다.
+    System.out.print((int)Math.floor(arr[0]+" "));
+    //남은 수를 반올림한다.
+    System.out.print((int)Math.round(arr[1]+" "));
+    }
+} 
+*/
+//main() 함수 내에는 숫자를 사용하지 말고 1, 2, 3 세 개의 숫자를 조합하여 가능한 한 모든 합을 출력하는 프로그램을 작성하시오. 
+//출력예와 같이 출력하시오.
+/*
+public class Main{
+    public static void main(String[] args){
+        printNum();
+    }
+    public static void printNum(){
+        int[] arr = {1,2,3};
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr.length;j++){
+                System.out.println(arr[i] + " + " + arr[j]+" = "+(arr[i]+arr[j]));
+            }
+        }
+    }
+}
+*/
+//10개의 정수를 입력받아 버블정렬로 내림차순 정렬을 하면서 하나의 단계가 끝날 때마다 그 정렬결과를 출력하는 프로그램을 작성하시오.
+/*
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+        //정수 입력받아 배열에 저장
+        Scanner sc = new Scanner(System.in);
+        int arr[] = new int[10];
+        for(int i=0;i<arr.length;i++){
+            arr[i] = sc.nextInt();
+        }
+        BubbleSort(arr);
+    }
+    //내림 차순 정렬(버블)하는 함수
+    public static void BubbleSort(int[] arr){
+        int temp=0;
+
+       //여기서 arr.length-1한 이유는 0~9까지하면 10번을 돌 수 있지만 10번쨰도 9번째와 같은 정렬된 값이 나오게 된다.
+       //그래서 굳이 10번째 까지 가ㅣㅈ 않고 0~8까지 돌려서 9번 돌리면 버블 정렬이 완성 되기 때문에 i값도 <length-1이 되는 것이다.
+        for(int i=0;i<arr.length-1;i++){
+             //여기서는 인덱스 값들만 보는거니까 배열 값의 -1한값이 넣어져야지만 0~9까지 인덱스 에서도 9도 포함 안되고 0~8의 인덱스네..  10개의 배열
+        //이유는 밑에 0~9로 하게되면 배열의 인덱스를 초과하게 된다. 
+        //이유는 밑에 arr[j+1]로 한것이 j가 9로가면 arr[10]이 되고 원래 arr[0]~arr[9]까지 밖에 없었던 배열은 인덱스 오류를 범하게 된다.
+            for(int j=0;j<arr.length-1;j++){
+                if(arr[j]<arr[j+1])
+                {
+                    temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+            //정렬 할 때마다 출력
+            for(int num=0;num<arr.length;num++){
+                System.out.print(arr[num]+" ");
+            }
+            System.out.println();
+        }
+    }
+}
+*/
+//정수 두 개를 입력받고  계산식을 매크로 함수로 작성하여 두 수의 차를 제곱한 값과 합을 세제곱한 값을
+//각각 출력하는 프로그램을 작성하시오. (거듭제곱은 '^'로 표시하기로 한다.)
+/*
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        System.out.printf("(%d - %d) ^ 2 = ",a,b);
+        System.out.println((int)(Math.pow((a-b),2)));
+        System.out.printf("(%d + %d) ^ 3 = ",a,b);
+        System.out.println((int)(Math.pow((a+b),3)));
+    }
+    //여기서 distiction함수 쓰는 이유는 -로 해주기떄문에 음수가 나오는 것을 방지하려고 어차피 제곱하면 양수이긴 하지않나??
+    //그냥 a-b하면 에러가 날 수 있다? -> 이거 아니고 그냥 잘 된다.
+    public static int distinction(int a, int b){
+        int result;
+        result = (a>b?(a-b):(b-a));
+        return result;
+    }
+}
+*/
+//정수 N을 입력받고 다시 N개의 정수를 입력받아 내림차순으로 정렬하여 출력하는 프로그램을 작성하시오. 
+//(1 ≤ N ≤ 15, 입력과 출력, 정렬은 모두 함수를 이용할 것)
+//1. 메인함수
+/*
+public class Main{
+    public static void main(String[] args){
+
+        //출력함수(정렬함수(입력함수))
+        printArr(arrayArr(input()));
+    }
+//2. 입력 함수 int[] input() 를 주의
+public static int[] input(){
+    Scanner input = new Scanner(System.in);
+    int n = input.nextInt();
+
+    //배열 생성
+    int arr[] = new int[n];
+
+    //배열에 n개의 수 채우기
+    for(int i=0;i<n;i++){
+        arr[i] = input.nextInt();
+    }
+    return arr;
+}
+//3. 출력 함수 void printArr(int arr[])를 주의
+public static void printArr(int arr[]){
+    for(int i=0;i<arr.length;i++){
+        System.out.print(arr[i] + " ");
+    }
+}
+//4. 내림 차순 정렬 함수 int[] arrayArr(int arr[])를 주의
+public static int [] arrayArr(int arr[]){
+    int temp;
+    for(int i=0;i<arr.length-1;i++){
+        for(int j=0;j<arr.length-1;j++){
+            if(arr[j]<arr[j+1]){
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+    return arr;
+    }
+}
+*/
+//두 수의 제곱근을 구하여 정수로 형변환을 한 후 생각해보자. 
+//두 수 사이의 수들은 모두 포함이 되면 작은 수의 경우 변환하기 전 원래의 제곱근과 같다면 개수에 포함을 시켜야 한다. 
+//큰 수는 원래의 수보다 작거나 같으므로 무조건 포함이 된다.
+//두 개의 실수를 입력받아 각각의 제곱근을 구하고 두 제곱근 사이에 존재하는 정수의 개수를 출력하는 프로그램을 작성하시오. 
+//단, 입력받는 두 실수는 양수이며 두 제곱근 사이라는 말은 두 제곱근을 포함한다.
+/*
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        double a = sc.nextDouble();
+        double b = sc.nextDouble();
+        //각각의 제곱근
+        //Math.sqrt(a) ; => a의 제곱근
+        System.out.println(gap(Math.sqrt(a),Math.sqrt(b)));
+    }
+
+    //두 수 사이에 존재하는 정수의 갯수
+    public static int gap(double a,double b){
+        int num =0;
+        double bigger = (a>b?a:b);
+        double smaller = (a>b?b:a);
+        //둘 중 더 작은 수 올림하기
+        smaller = Math.ceil(smaller);
+        //더 큰 수는 내림
+        bigger = Math.floor(bigger);
+        //작은 수가 큰 수 보다 같아 질 때까지 num더하기
+        while(smaller<=bigger){
+            smaller++;
+            num++;
+        }
+        return num;
+    }
+}
+*/
+//5개의 정수를 입력받아 각 정수의 절대값의 
+//합을 출력하는 프로그램을 작성하시오
+/*
+public class Main{
+    public static void main(String[] args){
+        System.out.println(sum());
+    }
+    public static int sum(){
+        Scanner sc = new Scanner(System.in);
+        int arr[] = new int[5];
+
+        for(int i=0;i<arr.length;i++){
+            arr[i] = sc.nextInt();
+        //5개의 정수 입력받아 배열에 저장
+        }
+        //절댓값 더하기
+        int sum =0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]<0){
+                arr[i] *= (-1);
+            }
+            sum += arr[i];
+            }
+            return sum;
+        }
+    }
+*/
+ 
+//정수 n을 입력받아 2의n승 2의10승은 1024 값을 출력하는 프로그램을 작성하시오. (1 ≤ n ≤ 20)
+/*
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.println(multiple(n));
+    }
+    public static int multiple(int n){
+        int result = 2;
+        for(int i=1;i<n;i++){
+            result *=2;
+            //result = 2;
+            //result = 4;
+            //result = 8;
+            //result = 16
+        }
+        return result;
+    }
+}
+*/
+//세 개의 실수를 입력받아 합계와 평균을 구하여 평균을 반올림한 정수를 출력하고, 다음은 입력받은 수를 각각 먼저 반올림한 후 합계와 평균을 구하여 평균을 반올림한 한 결과를 출력하는 프로그램을 작성하시오.
+/*
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        double a = sc.nextDouble();
+        double b = sc.nextDouble();
+        double c = sc.nextDouble();
+
+        //합계와 평균을 구해서 평균을 반올림
+        System.out.println(Math.round(Avg(a,b,c)));
+        //Math.round는 먼저 반올림을 하고 평균을 반올림
+        System.out.println(Math.round(Avg(Math.round(a),Math.round(b),Math.round(c))));
+
+    }
+    //합계와 평균을 구하는 함수
+    public static double Avg(double a, double b, double c){
+        double sum;
+        double avg;
+        sum = a+b+c;
+        avg = sum/3; //이렇게 하면 평균을 반올림 하게 된다.
+        return avg;
+    }
+}
+*/
+//자료의 개수 7을 매크로 상수로 정의하여 자료의 개수만큼 정수를 입력받아 입력받은 순서대로 앞에서부터 마지막까지 가면서 바로 뒤의 숫자와 비교하여 크면 교환한다.
+//이러한 작업을 세 번 반복한 후 그 결과를 하나의 행에 공백으로 구분하여 출력하는 프로그램을 작성하시오.
+public class Main{
+    public static void main(String[] args){
+        //자료 개수 상수로 정의
+        final int numOfData = 7;
+
+        //자료 개수 만큼 정수 입력받아 배열에 저장
+        int data[] = new int[numOfData];
+        Scanner sc = new Scanner(System.in);
+        for(int i=0;i<numOfData;i++){
+            data[i] = sc.nextInt();
+        }
+        //버블 정렬 세번
+        arrayData(data);
+
+        for(int i=0;i<numOfData;i++){
+            System.out.print(data[i]+" ");
+        }
+    }
+    //배열 입력받아 버블 정렬
+    public static void arrayData(int arr[]){
+        int temp;
+        for(int i=0;i<3;i++){
+            for(int j=0;j<arr.length-1;j++){
+                //이거는 내림차순
+                /*
+                if(arr[j]<arr[j+1]){
+                    temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                    */
+                    //이거는 올림차순
+                    if(arr[j]>arr[j+1]){
+                        temp = arr[j];
+                        arr[j] = arr[j+1];
+                        arr[j+1] = temp;
+                }
+            }
+        }
+    }
+}

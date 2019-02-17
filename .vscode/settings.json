@@ -1,0 +1,17 @@
+{
+   "java.home": "C:/Users/KWONYOUNGMEE/Documents/java-1.8.0-openjdk-1.8.0.191-1.b12.redhat.windows.x86_64",
+   "files.associations": {
+      "stdio.h": "c"
+   },
+   "code-runner.executorMap": 
+{ 
+  "python": "C:/Users/KWONYOUNGMEE/AppData/Local/Programs/Python/Python37/python.exe"
+
+},
+"python.linting.pylintEnabled": true
+  // "python.pythonPath": "C:/Users/KWONYOUNGMEE/AppData/Local/Programs/Python/Python37/python.exe",
+  // "python.linting.pylintEnabled": true,
+
+   
+}
+
