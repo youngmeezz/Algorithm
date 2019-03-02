@@ -2096,6 +2096,7 @@ public class Main{
 */
 //자료의 개수 7을 매크로 상수로 정의하여 자료의 개수만큼 정수를 입력받아 입력받은 순서대로 앞에서부터 마지막까지 가면서 바로 뒤의 숫자와 비교하여 크면 교환한다.
 //이러한 작업을 세 번 반복한 후 그 결과를 하나의 행에 공백으로 구분하여 출력하는 프로그램을 작성하시오.
+/*
 public class Main{
     public static void main(String[] args){
         //자료 개수 상수로 정의
@@ -2125,7 +2126,7 @@ public class Main{
                     temp = arr[j];
                     arr[j] = arr[j+1];
                     arr[j+1] = temp;
-                    */
+                    
                     //이거는 올림차순
                     if(arr[j]>arr[j+1]){
                         temp = arr[j];
@@ -2133,6 +2134,401 @@ public class Main{
                         arr[j+1] = temp;
                 }
             }
+        }
+    }
+}
+*/
+//원주율을 3.141592로 매크로 상수로 정의하고 원의 넓이를 구하는 매크로 함수를 작성하여 반지름을 입력받아 원의 넓이를 출력하는 프로그램을 작성하시오. (소수 넷째자리에서 반올림)
+//내풀이
+/*
+public class Main{
+    public static double k = 3.141592;
+    public static void main(String[] args){
+
+        
+        int r =0;
+        int area = 0;
+
+        solution(r;
+    }
+
+    public solution(int r)
+    {
+        int area = r*r*k;
+
+        System.out.println(area);
+    }
+}
+*/
+/*
+public class Main{
+    public static double k = 3.141592;
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("radius : ");
+        double n = sc.nextDouble(); //반지름 입력받는것
+        System.out.print("area = ");
+        System.out.printf("%.3f",solution(n)); //원의넓이 출력
+    }
+
+    public static double solution(double r)
+    {
+        double area = r*r*k;
+        return area;
+    }
+}
+*/
+
+//20 이하의 자연수 N을 입력받아 재귀함수를 이용해서 문자열 “recursive”를 N번 출력하는 프로그램을 작성하시오.
+/*
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        recur(n);
+    }
+
+    //recursive 출력하는 재귀함수
+    public static int recur(int n){
+        if(n == 0){
+            return n; //0이 입력되면 0을 출력하라
+        }else{
+            System.out.println("recursive");
+            return recur(n-1);
+        }
+    }
+}
+*/
+//자연수 N을 입력받아 재귀함수를 이용하여 N부터 1까지 차례대로 출력하는 프로그램을 작성하시오. 
+//N은 50이하의 자연수이다.
+/*
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        recur(n);
+    }
+    public static int recur(int n){
+        if(n ==0)
+        return n;
+        else{
+            System.out.print(n+" ");
+            return recur(n-1);
+        }
+    }
+}
+*/
+//100 이하의 자연수 N을 입력받아 재귀함수를 이용하여 1부터 N까지의 합을 구하는 프로그램을 작성하시오.
+/*
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        recur(a);
+        System.out.println(a);
+      //System.out.println(recur(input));
+    }
+    public static int recur(int a){
+
+        if(a==1){
+            return a;
+        }
+        else 
+        {
+            //System.out.print(n+" ");
+
+            //return 꼭 쓰는 이유
+            //recur(int a) 이부분에서 에러가 나는데 this method must return a result of type int java
+
+            //여기서 그냥 return a가 아니기떄문에 형성평가 2번의 짝수 홀수 출력하는 재귀함수와는 다르게 나온다. 위에     //recur(input); // System.out.println(input); 안되는 이유
+            a = recur(a-1)+a;
+            return a;
+            //System.out.println(recur(a-1) + a);
+      
+        }
+    }
+}
+*/
+ //10 이하의 자연수 N을 입력받아 주사위를 N번 던져서 나올 수 있는 모든 경우를 출력하되
+ // 중복되는 경우에는 앞에서부터 작은 순으로 1개만 출력하는 프로그램을 작성하시오.
+ /*
+ import java.util.Scanner;
+
+ public class Main{
+     public static void main(String[] args){
+         Scanner sc = new Scanner(System.in);
+         int n = sc.nextInt();
+
+         int dice[] = new int[n];
+
+         for(int i=0;i<dice.length;i++){
+             dice[i] = 1;
+         }
+
+         if(n>=1){
+             while(dice[n-1]<=6){
+                 printArray(dice);
+                 dice[n-1]++;
+             }
+         if(n>=2){
+            while(dice[n-1]<6){
+                dice[n-2]++;
+                dice[n-1] = dice[n-2];
+                while(dice[n-1]<6){
+                    printArray(dice);
+                    dice[n-1]++;
+                }
+                printArray(dice);
+            }
+             if(n>2){
+                 int level =3;
+                 while(level<=n){
+                     recurDice(n,level,dice);
+                     level++;
+                 }
+             }
+        }
+    }
+}
+
+//배열을 출력하는 함수
+ public static void printArray(int arr[]){
+     for(int j=0;j<arr.length;j++){
+         System.out.print(arr[j]+" ");
+     }
+     System.out.println("");
+ }
+
+ //a파라미터로 받아 n-a자리 수 하나씩 늘려 출력
+ public static void changeDice(int n,int a,int arr[]){
+     while(arr[n-a]<=6){
+         printArray(arr);
+         arr[n-a]++;
+     }
+ }
+ //재귀함수
+ public static void recurDice(int n,int a,int arr[]){
+     if(a==2){
+         while(arr[n-2]<6){
+             arr[n-2]++;
+             arr[n-1] = arr[n-2];
+             while(arr[n-1]<6){
+                 printArray(arr);
+                 arr[n-1]++;
+             }
+             printArray(arr);
+         }
+
+     }else{
+         while(arr[n-a]<=6){
+             arr[n-a+1] = arr[n-a];
+             arr[n-a]++;
+             recurDice(n,a-1,arr);
+             }
+         }
+     }
+}
+*/
+//첫 번째 수는 1이고 N번째 수는 (N/2)번째 수와 (N-1)번째 수의 합으로 구성된 수열이 있다. 
+//50 이하의 자연수 N을 입력받아 재귀호출을 이용하여 이 수열에서 N번째 수를 출력하는 프로그램을 작성하시오.
+//(1 2 3 5 7 10 13 18 …)
+/*
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n= sc.nextInt();
+        System.out.println(recursive(n));
+    }
+    public static int recursive(int n){
+        if(n==1){
+            return 1;
+        }
+        else{
+            return(recursive(n/2)+recursive(n-1));
+        }
+    }
+}
+*/
+//9자리 이하의 자연수를 입력받아 재귀함수를 이용하여 각 자리 숫자의 제곱의 합을 출력하는 프로그램을 작성하시오.
+//( main()함수에 변수 하나, 재귀함수에 매개변수 하나만을 사용할 수 있다.)
+/*
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int sum =0;
+	///숫자 입력받구 n으로 그다음에 합계는 아래 함수를 이용해서 sum을 구한다.
+        System.out.println((int)method(n,sum));
+    }
+    public static double method(int n,int sum){
+        //매개변수 n받기 , 1의 자리 수 구하기
+        if(n<1){
+            return sum;
+        }else{
+		//1의자리수 계속 제곱하기 위함 231 = 1^2+ 3^2 + 2^2 
+            sum += Math.pow(n%10,2);
+			
+			//여기서 계속 10으로 나눠주면서 1의 자리 숫자를 구해줍니다. 이거하는이유가 재귀함수로 계속부르기 위함
+            //231%10 = 1^2 -> 231/10 = 23-> 23%10 =3^2 ->  23/10 = 2%10 = 2^2 
+            return method(n/10,sum);
+        }
+    }
+}
+*/
+//자연수 N을 입력받아 1부터 N까지 출력을 하되 n-1번째 값은 n번째 값을 2로 나눈 몫이 되도록 하는 프로그램을 작성하시오.
+/*
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        method(n);
+        System.out.println(n);
+    }
+    public static int method(int n){
+        if(n==1){
+            return 1;
+        }else{
+            System.out.print(method(n/2)+" ");
+            return n;
+        }
+    }
+}
+*/
+//자연수 N을 입력받아 N이 홀수인 경우에는 1부터 N까지의 홀수를  짝수인 경우는 2부터 N까지의 짝수를 모두 출력하는 프로그램을 재귀함수로 작성하시오.
+/*
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+       // method(n);
+        //System.out.println(n);
+        System.out.println(method(n));
+    }
+    public static int method(int n){
+        if(n==1 || n==2){
+            return n;
+        }
+        else{
+            System.out.print(method(n-2)+" ");
+            //this method must  return a result of type int Java 때문에 반드시 return n해준다
+           return n;
+        }
+    }
+}
+*/
+//자연수 N과 M을 입력받아서 주사위를 N번 던져서 나온 눈의 합이 M이 나올 수 있는 모든 경우를 출력하는 프로그램을 작성하시오. 
+//단, N은 10 이하의 정수이다.
+/*
+public class Main{
+    static int N;
+    static int M;
+    static int [] arr;
+
+    public static void main(String[] args){
+        Scanner sc  = new Scanner(System.in);
+        N = sc.nextInt();
+        M = sc.nextInt();
+
+        arr = new int[N];
+
+        dice(0,0);
+    }
+    public static void dice(int level,int sum){
+        if(level < arr.length){
+            for(int i=1;i<=6;i++){
+                arr[level] = i;
+                dice(level+1,sum+i);
+            }
+        }else{
+            if(sum == M){
+                for(int j=0;j<arr.length;j++){
+                    System.out.print(arr[j]+" ");
+                }
+                System.out.println("");
+            }
+        }
+    }
+}
+*/
+//첫 번째는 1, 두 번째는 2, 세 번째부터는 앞의 두 수의 곱을 100으로 나눈 나머지로 이루어진 수열이 있다. 
+//100 이하의 자연수 N을 입력받아 재귀함수를 이용하여 N번째 값을 출력하는 프로그램을 작성하시오.
+/*
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        System.out.println(recur(N));
+    }
+    public static int recur(int N){
+        if(N == 1){
+            return 1;
+        }else if(N==2){
+            return 2;
+        }else{
+            return (recur(N-2)*recur(N-1))%100;
+        }
+    }
+}
+*/
+//100만 이하의 자연수 N을 입력받아 짝수이면 2로  홀수이면 3으로 나누는 작업을 반복하다가 그 값이 1이 되면 그때까지 나누었던 작업의 횟수를 출력하는 프로그램을 재귀함수로 작성하시오.
+//100 → 50 → 25 → 8 → 4 → 2 → 1
+//횟수(level)도 함께 전달하고 n이 1이면 level을 출력하면 된다. 
+//함수(n/2 또는 n/3  level+1)
+/*
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        System.out.println(recur(n,0));
+    }
+    public static int recur(int n,int level){
+        if(n==1){
+            return level;
+        }else if(n%2 ==0){
+            return recur(n/2,level+1);
+        }else{
+            return recur(n/3,level+1);
+        }
+    }
+
+}
+*/
+//3자리로 이루어진 자연수 3개를 입력받아 그 수들의 곱을 구한 후 그 결과값의 각 자리 숫자들중 0을 제외한 모든 수들의 곱을 구하여 출력하는 프로그램을 재귀함수로 작성하시오.
+//입력예제의 세 수의 곱은 1365300이다. 그러므로 1 * 3 * 6 * 5 * 3 = 270
+//1의 자리수 * 1의 자리를 제외한 남은 자리수의 곱 (단  1의 자리수가 0이면 1로 바꾸어서 곱한다.)
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        int N = a*b*c;
+        System.out.println(recur(N,1));
+    }
+    public static int recur(int N,int sum){
+        //몇자리 수인가?
+        int i =0;
+        while(N/Math.pow(10,i)>10)
+        {
+            i++;
+        }
+        //i+1자리 수이다.
+        if(N<10){
+            if(N!=0){
+                return sum*N;
+            }else{
+                return sum*1;
+            }
+        }else{
+            int x = N/(int)(Math.pow(10,i));//첫번째 수
+            int y = N%(int)(Math.pow(10,i));//첫번째 수 잘라내고 남은 수
+            return recur(y,sum*x);
         }
     }
 }

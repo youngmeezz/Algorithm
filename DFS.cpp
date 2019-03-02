@@ -78,7 +78,6 @@ int main(void){
     a[7].push_back(6);
     
     dfs(1);
-//삿포로,일본계획,
     return 0;
 }
 //이 dfs를 가지고 그래프 알고리즘을 활용할 수 있다
