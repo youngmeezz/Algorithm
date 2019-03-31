@@ -2500,6 +2500,7 @@ public class Main{
 //3자리로 이루어진 자연수 3개를 입력받아 그 수들의 곱을 구한 후 그 결과값의 각 자리 숫자들중 0을 제외한 모든 수들의 곱을 구하여 출력하는 프로그램을 재귀함수로 작성하시오.
 //입력예제의 세 수의 곱은 1365300이다. 그러므로 1 * 3 * 6 * 5 * 3 = 270
 //1의 자리수 * 1의 자리를 제외한 남은 자리수의 곱 (단  1의 자리수가 0이면 1로 바꾸어서 곱한다.)
+/*
 import java.util.Scanner;
 
 public class Main{
@@ -2532,3 +2533,260 @@ public class Main{
         }
     }
 }
+*/
+
+/////////////////////////////////////////////////////////////
+/*정올 실력키우기*/
+////////////////////////////////////////////////////////////
+/*
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+
+        int s = sc.nextInt();
+        int e = sc.nextInt();
+
+        if((s>=2 && s<=9) && (e>=2 && e<=9))
+        {
+            if(s<=e)
+            {
+                for(int num=1;num<=9;num++){
+                    for(int dan=s;dan<=e;dan++){
+                        //System.out.print(dan+" * "+num+" = "+dan*num +"\t");
+                        System.out.printf("%d * %d = %2d   ",dan,num,dan*num);
+                    }
+                    System.out.print("\n");
+                }
+            }
+            else
+            {
+                for(int num=1;num<=9;num++){
+                    for(int dan=s;dan>=e;dan--){
+                        //System.out.print(dan+" * "+num+" = "+dan*num +"\t");
+                        System.out.printf("%d * %d = %2d   ",dan,num,dan*num);
+                    }
+                    System.out.print("\n");
+                }
+            }
+        }
+        else
+        {
+            System.out.println("INPUT ERROR!");
+        }
+        sc.close();
+    }
+}
+*/
+/*
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+
+        int s = sc.nextInt();
+        int e = sc.nextInt();
+
+        if((s>=2 && s<=9) && (e>=2 && e<=9))
+        {
+            if(s<=e)
+            {
+                for(int dan=s; dan<=e; dan++){
+                    for(int num=1;num<=9;num++){
+                        //System.out.print(dan+" * "+num+" = "+ dan*num + "\t");
+                        System.out.printf("%d * %d = %2d   ",dan,num,dan*num);
+                        if(num%3 == 0)
+                        {
+                            System.out.print("\n");
+                        }
+                        System.out.print("\n");
+                    }
+                }
+            }
+            else
+                {
+                    for(int dan=s;dan>=e;dan--)
+                    {
+                        for(int num=1;num<=9;num++)
+                        {
+                           // System.out.print(dan+" * "+num+" = "+ dan*num + "\t");
+                           System.out.printf("%d * %d = %2d   ",dan,num,dan*num);
+                            if(num%3 ==0)
+                            {
+                                System.out.print("\n");
+                            }
+                        }
+                        System.out.print("\n");
+                    }
+                }
+            }
+        
+        else{
+                System.out.println("INPUT ERROR!");
+                }
+        sc.close();
+    
+    }
+}
+*/
+//별삼각형1
+/*
+import java.util.Scanner;
+
+public class Main{
+
+    public static void main(String[] args){
+        int n;
+        int sel;
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
+        sel = sc.nextInt();
+
+        if(n>100 || n<1)
+        {
+            System.out.println("INPUT ERROR!");
+            return;
+        }
+        if(sel == 1)
+        {
+            for(int i=0;i<n;i++){
+                for(int j=0;j<=i;j++){
+                    System.out.print("*");
+                }
+                System.out.println();
+            }
+        }
+        else if(sel==2){
+            for(int i=0;i<n;i++){
+                for(int j=i;j<n;j++){
+                    System.out.print("*");
+                }
+                System.out.println();
+            }
+        }
+        else if(sel == 3){
+            for(int i=0;i<n;i++){
+                for(int j=i;j<n-1;j++){
+                    System.out.print(" ");
+                }
+                for(int j=0;j<i*2+1;j++){
+                    System.out.print("*");
+                }
+                System.out.println();
+            }
+        }
+        else
+        {
+            System.out.println("INPUT ERROR!");
+            return;
+        }
+    }
+}
+*/
+//ArrayList만드는 방법 프로그래머스 - ArrayList - Java API사용법 -DataStructure
+
+import java.util.ArrayList;//ArrayList datastructure는 java util안에 포함됨
+import java.util.Iterator;
+
+public class Main{
+    public static void main(String[] args){
+
+        ArrayList<Integer> numbers = new ArrayList<>();
+        //제너릭 -> ArrayList가 내부적으로 element들이 Integer 숫자라는 것이다.
+        //실제로는 제너릭 사용해야 함.
+
+        //데이터 추가 방법
+        numbers.add(10); // numbers.add(0,10) //이게 첫번쨰 배열에있다.
+        numbers.add(20); // numbers.add(1,50) //두번쨰 배열에 추가
+        numbers.add(30); // numbers.add(2,30) //세번쨰 배열에 추가
+        numbers.add(40); // numbers.add(3,40) // 네번쨰 배열에 추가
+
+        System.out.println("add(값)");
+        System.out.println(numbers);
+
+            //1번에 50을 추가하고 싶다면
+            numbers.add(1,50); // numbers라는 arraylist에 내부적으로 존재하는 배열에 인덱스 1번에 50이라는 값을 끼워 넣음
+            //index 1에 빈공간 확보 3뒤로,2뒤로  50을 넣는다.
+            System.out.println("\nadd(인덱스, 값)");
+            System.out.println(numbers);
+
+        
+        //데이터 삭제 방법 remove사용
+        numbers.remove(2);//인자로 2를 전달하면 인덱스 2의 데이터를 삭제하고 앞으로 한칸씩 댕긴다.
+        //index 2의값을 삭제하기때문에 20을 삭제하고 30과 40은 앞으로 전진
+        System.out.println("\nremove(인덱스)");
+        System.out.println(numbers);
+        
+
+        //데이터 가져오는 방법 get사용 여기도 인덱스 이용
+        System.out.println("\nget(인덱스)");
+        System.out.println(numbers.get(2));//두번쨰 인덱스 30을 가져오게 된다.
+        
+        //데이터 사이즈 가져오기 몇개가 저장됬는지 알수 있다.
+        System.out.println("\nsize(데이터크기)");
+        System.out.println(numbers.size());
+
+        //30의 인덱스 위치
+        System.out.println("\nindexOf()");
+        System.out.println(numbers.indexOf(30));
+
+
+        Iterator it = numbers.iterator(); //it객체를 만들어 <Integer>로 써주는게 훨씬 낫다.
+        //numbers라는 arraylist의 iterator메소드를 호출해서 it라는 iterator데이터 타입의 변수 객체를 만든다.
+        System.out.println("\niterator");
+
+        while(it.hasNext()){ //it가 hasNext로 가져올 element가 있는지 확인
+            int value = (int)it.next(); //it.next를 해서 그 return된 값은 value에 담는다.
+            //return된 값이 object데이터 타입이라서 int로 캐스팅 해준다. 그래서 it를 <Integer>로 처리하는게 훨씬 바람직
+
+            if(value == 30){  //순회 하면서 보시는것처럼 value값이 30이라면
+                it.remove();//iterator객체의 메소드인 remove를 통해서 현재 next를 통해서 return한 value값이 있을떄
+                //it iterator객체에 30이 마지막으로 return한 값을 list에서 삭제
+                //add도 있으니 manual참고
+            }
+            System.out.println(value);
+        }
+        System.out.println(numbers);
+
+        System.out.println("\nfor each");
+        for(int value : numbers){ //numbers에 담긴 내용이 value에 담겨서 순회할떄 마다 element를 하나하나 꺼내서 value에 담음
+            System.out.println(value);
+        }
+        System.out.println("\nfor");
+        for(int i=0;i<numbers.size();i++){ //numbers.size보다 작은동안  numbers.get(i)의 값을 하나씩 꺼내서 사용
+            System.out.println(numbers.get(i));
+        }
+    }
+}
+//ArrayList어떻게 만드는지 어떻게 내부적으로 사용하는지
+//ArrayList강의가 길었따..
+        /*
+        Iterator it = numbers.iterator();// 반복 사용법
+        //하나하나 꺼내와서 어떠한 처리를 하는 방법
+        //iterator은 어떠한 값을 return할건데 it라는 변수에 담기게 될
+        //iterator 데이터 타입으로 알 수 있다. 자바에 있는 interface
+        //자바에 iterator라는 interface에 접근해서 it에 접근한다.
+        while(it.hasNext()){ //hasNext가 true아니면 false를 리턴하는 boolean값을 가진다.
+           //다음 엘리먼트가 있느냐?
+            int vaule = it.next(); // numbers라는 arraylist가 갖고있는 데이터 
+            //next가 처음 호출되면 첫번쨰 데이터를 return에서 value에 갖게 된다.
+            //다시 while문시작되면서 has next 다음 엘리먼트가 있기 떄문에 true
+            //다시 next가 실행됨 // return값이 value로 
+            //마지막 element를 가지고 온 이후에 다시 hasnext하면 다음값이 없어서
+            //false가 되어 while문 종료
+            //나중에 LinkedList보면서 설명 기회
+            for(int value : numbers){
+                System.out.println(value);
+            }
+            //for문은 반복적으로 실행
+            //numbers에 저장된 element들이 value라는 int변수에 담겨서
+            //중괄호 사이에서 사용할 수 있게 됩니다.
+            //하나하나 꺼내서 처리 가능
+        }
+    }
+
+    */
+
+    

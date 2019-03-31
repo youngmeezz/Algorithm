@@ -328,7 +328,6 @@ public class ntechservice3 {
         }   
    }
 */
-
 import java.util.*;
 import java.util.Scanner;
 import java.io.*;
@@ -355,12 +354,12 @@ public class ntechservice3 {
                 array[i]= (char)(array[i]-(array2[i]-96));//char로 바꿔주는 이유 형변환해야지 여기서 int로 인식해서 문자열이 아님
                 //그냥 char형이 제일 빠름 String으로 하려했는데 복잡함
                  if(array[i]<'a'){
-                    array[i]=(char) (array[i]+26);
+                    array[i]=(char)(array[i]+26);
                  }
                 else if(array[i]>'z')
-                    array[i]=(char) (array[i]-26);
-            }
-           return String.valueOf(array) ;
+                    array[i]=(char)(array[i]-26);
+                 }
+           return String.valueOf(array);
         }
     public static void main(String args[]) {
 
@@ -374,7 +373,6 @@ public class ntechservice3 {
         System.out.println(Solution(encrypted_text,key,rotation));
    
     }
-
 }
 
 /*

@@ -116,7 +116,6 @@ public static void main(String[] args)throws IOException {
     System.out.println(sb.toString());
 }
 
-
 //중요한 것은 방문했다는 visited와 몇 번 호출됐다는 hacking라는 변수를 따로 두어서
 //visited는 매 번 리셋해줘야 하지만
 //hacking는 호출 될 때 마다 값을 더해줘야 한다.
